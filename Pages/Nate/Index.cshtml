@@ -10,57 +10,28 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Cover)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Books[0].Summary)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Books) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cover)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row w-100">
+    @foreach (var item in Model.Books)
+    {
+    <div class="col-sm-4 border border-dark rounded m-2 p-4" style="min-width:300px;">
+        <div class="row w-100">
+            <div class="col-6" style="background-image:url(@item.Cover); background-size:contain; background-repeat:no-repeat; background-position:center;">
+            </div>
+            <div class="col-6">
+                <h4 class="text-primary">@item.Title</h4>
+                <h5 class="text-primary">@item.Author</h5>
+                <h5 class="mt-2">Genres</h5>
+                <p class="text-primary text-truncate">@item.Genre</p>
+                <h5 class="">Summary</h5>
+                <p class="text-primary text-truncate">@item.Summary</p>
+            </div>
+        </div>
+        <div class="row w-auto h-auto pb-0 pt-auto">
+            <a class="col-3 mx-auto" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+            <a class="col-3 mx-auto" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a class="col-3 mx-auto" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        </div>
+    </div>
+    }
+</div>
