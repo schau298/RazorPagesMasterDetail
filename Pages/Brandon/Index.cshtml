@@ -1,23 +1,64 @@
-﻿@page
+﻿@page "{SearchString?}"
 @model RazorPagesMasterDetail.Pages.Brandon.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .btn-style {
+        padding: 30px;
+        border-radius: 50%;
+        float: right;
+        background-color: #EA80FC;
+        color: white;
+    }
 
-<h1>Index</h1>
+        .btn-style:hover {
+            color: #343A40;
+        }
+
+    .btn-crud {
+        padding: 25px;
+        border-radius: 50%;
+        background-color: #EA80FC;
+        color: white;
+    }
+
+        .btn-crud:hover {
+            color: #343A40;
+        }
+
+    body {
+        background-color: #606368;
+    }
+
+</style>
+<h1 class="text-center" style="color: #EA80FC;">Book Keeper</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" style="color: #EA80FC;" class="a-tag">New Book Entry</a>
 </p>
-<table class="table">
+<form>
+    <p>
+        @*<select asp-for="BookGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>*@
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table table-responsive-sm table-dark">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Books[0].Date)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort" class="text-white">
+                    @Html.DisplayNameFor(model => model.Books[0].Date)
+                    </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort" class="text-white">
                 @Html.DisplayNameFor(model => model.Books[0].Title)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Books[0].Author)
@@ -26,41 +67,49 @@
                 @Html.DisplayNameFor(model => model.Books[0].Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Books[0].Cover)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Books[0].Summary)
             </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Books[0].Cover)
+                </th>*@
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Books) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cover)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Cover)
+                    </td>*@
+            </tr>
+            <tr>
+                <td colspan="1" >
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn-style" style="float: left;">Edit</a>
+                </td>
+                <td colspan="3">
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn-style" style="text-align: center;">Details</a>
+                </td>
+                <td colspan="1">
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn-style">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
