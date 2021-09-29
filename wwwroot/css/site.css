@@ -69,3 +69,14 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+a:link, a:active, a:visited {
+    color: darkslateblue;
+}
+
+a:hover {
+    color: darkslateblue;
+    background-color: lightsteelblue;
+    padding: 12px;
+    border-radius: 4px;
+}
