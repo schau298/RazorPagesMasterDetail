@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+<<<<<<< HEAD
 <style>
     .bookBox {
         border: 4px outset saddlebrown;
@@ -35,10 +36,15 @@
    }
 </style>
 <h1>Book List</h1>
+=======
+
+<h1>Index</h1>
+>>>>>>> master
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<<<<<<< HEAD
 <form>
     <p>
         Title: <input type="text" asp-for="SearchString" />
@@ -84,3 +90,59 @@
 </div>
         }
     
+=======
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Cover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].Summary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Books) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cover)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+>>>>>>> master
