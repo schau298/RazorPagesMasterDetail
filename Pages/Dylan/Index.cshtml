@@ -4,12 +4,93 @@
 @{
     ViewData["Title"] = "Index";
 }
+<<<<<<< HEAD
+<style>
+    .bookBox {
+        border: 4px outset saddlebrown;
+        background-color: peachpuff;
+        text-align: left;
+        padding:7px 7px 7px 7px;
+    }
+    h1{
+        text-align:center;
+        font-weight:bold;
+        color:saddlebrown;
+        font-size:36px;
+    }
+   h2{
+       font-size: 30px;
+       font-weight: bold;
+       color:darkgoldenrod;
+       text-shadow: 2px, 2px, 3px saddlebrown;
+   }
+   h3{
+       font-size: 25px;
+       color:gray;
+       font-weight:lighter;
+   }
+   h4{
+       font-size: 20px;
+       color:darkgoldenrod;
+       font-weight:normal;
+   }
+</style>
+<h1>Book List</h1>
+=======
 
 <h1>Index</h1>
+>>>>>>> master
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<<<<<<< HEAD
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+        <a asp-page="./Index" asp-route-sortOrder="desc"
+           style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
+            Sort by Title (descending)
+        </a>
+        <a asp-page="./Index" asp-route-sortOrder="asc"
+           style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
+            Sort by Title (ascending)
+        </a>
+    </p>
+</form>
+
+        @foreach (var item in Model.Books)
+        {
+<div class="bookBox">
+   
+    <div class="col-4" style="background-image:url(@item.Cover);background-repeat:no-repeat;">
+    </div>
+
+    <div class="col-8">
+        <h2>@item.Title</h2>
+
+        <h3>@item.Author</h3>
+
+        <h4>Issue Date</h4>
+        <p>@item.Date</p>
+
+        <h4>Genres</h4>
+        <p>@item.Genre</p>
+
+        <h4>Summary</h4>
+        <p>@item.Summary</p>
+    </div>
+
+    <div class="row w-auto h-auto pb-0 pt-auto">
+        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+    </div>
+</div>
+        }
+    
+=======
 <table class="table">
     <thead>
         <tr>
@@ -64,3 +145,4 @@
 }
     </tbody>
 </table>
+>>>>>>> master

@@ -19,6 +19,35 @@ namespace RazorPagesMasterDetail.Pages.Dylan
             _context = context;
         }
 
+<<<<<<< HEAD
+        public IList<Books> Books { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        public string TitleSort { get; set; }
+        public async Task OnGetAsync(string sortorder)
+        {
+            TitleSort = sortorder;
+            var books = from b in _context.Books
+                        select b;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                books = books.Where(b => b.Title.Contains(SearchString));
+            }
+            if (TitleSort == "desc")
+            {
+                books = books.OrderByDescending(b => b.Title);
+            }
+            else
+            {
+                books = books.OrderBy(b => b.Title);
+            }
+
+            Books = await books.ToListAsync();
+        }
+    }
+}
+
+=======
         public IList<Books> Books { get;set; }
 
         public async Task OnGetAsync()
@@ -27,3 +56,4 @@ namespace RazorPagesMasterDetail.Pages.Dylan
         }
     }
 }
+>>>>>>> master
