@@ -22,9 +22,6 @@ namespace RazorPagesMasterDetail.Models
         
         [Required]
         public string Genre { get; set; }
-
-        //May need to change image url code
-        [DataType(DataType.ImageUrl)]
         public string Cover { get; set; }
 
         public string Summary { get; set; }

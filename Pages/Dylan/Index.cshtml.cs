@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,8 @@ namespace RazorPagesMasterDetail.Pages.Dylan
 }
 
 
+
+
         public IList<Books> Books { get;set; }
 
         public async Task OnGetAsync()
@@ -56,4 +59,5 @@ namespace RazorPagesMasterDetail.Pages.Dylan
         }
     }
 }
+
 

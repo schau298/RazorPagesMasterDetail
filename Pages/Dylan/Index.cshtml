@@ -6,6 +6,9 @@
 }
 
 <style>
+    body {
+        background-color: antiquewhite;
+    }
     .bookBox {
         border: 4px outset saddlebrown;
         background-color: peachpuff;
@@ -35,47 +38,69 @@
        font-weight:normal;
    }
 </style>
+
+<body>
+    <h1>Book List</h1>
+
+
 <h1>Book List</h1>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
 
 <form>
+
     <p>
-        Title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-        <a asp-page="./Index" asp-route-sortOrder="desc"
-           style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
-            Sort by Title (descending)
-        </a>
-        <a asp-page="./Index" asp-route-sortOrder="asc"
-           style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
-            Sort by Title (ascending)
-        </a>
+        <a asp-page="Create">Create New</a>
     </p>
-</form>
 
-        @foreach (var item in Model.Books)
-        {
-<div class="bookBox">
-   
-    <div class="col-4" style="background-image:url(@item.Cover);background-repeat:no-repeat;">
-    </div>
+    <form>
+        <p>
+            Title: <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+            <a asp-page="./Index" asp-route-sortOrder="desc"
+               style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
+                Sort by Title (descending)
+            </a>
+            <a asp-page="./Index" asp-route-sortOrder="asc"
+               style="float:right;background:lightsteelblue;color:black;padding:6px;border-radius:6px;text-decoration:none;margin-bottom:6px;">
+                Sort by Title (ascending)
+            </a>
+        </p>
+    </form>
 
-    <div class="col-8">
-        <h2>@item.Title</h2>
+    @foreach (var item in Model.Books)
+    {
+        <div class="bookBox">
 
-        <h3>@item.Author</h3>
+            <div>
+                <img src="~/images/@item.Cover" asp-append-version="true" alt="DB Images" style="width:300px;height:auto;" />
+            </div>
 
-        <h4>Issue Date</h4>
-        <p>@item.Date</p>
+            <div class="col-9">
+                <h2>@item.Title</h2>
 
-        <h4>Genres</h4>
-        <p>@item.Genre</p>
+                <h3>@item.Author</h3>
 
-        <h4>Summary</h4>
-        <p>@item.Summary</p>
-    </div>
+                <h4>Issue Date</h4>
+                <p>@item.Date</p>
+
+                <h4>Genres</h4>
+                <p>@item.Genre</p>
+
+
+                <h4>Summary</h4>
+                <p>@item.Summary</p>
+            </div>
+
+            <div class="row w-auto h-auto pb-0 pt-auto">
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </div>
+        </div>
+    }
+</body>
 
     <div class="row w-auto h-auto pb-0 pt-auto">
         <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
@@ -86,4 +111,4 @@
         }
     
 
- 
+

@@ -10,8 +10,8 @@ using RazorPagesMasterDetail.Data;
 namespace RazorPagesMasterDetail.Migrations
 {
     [DbContext(typeof(RazorPagesMasterDetailContext))]
-    [Migration("20210925165349_initialCreate")]
-    partial class initialCreate
+    [Migration("20211004180043_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
