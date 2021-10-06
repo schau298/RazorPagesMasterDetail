@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,6 +23,8 @@ namespace RazorPagesMasterDetail.Pages.Dylan
 
         [BindProperty]
         public Books Books { get; set; }
+        [BindProperty]
+        public IFormFile Cover { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

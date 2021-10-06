@@ -3,58 +3,87 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var cover = "~/images/" + (Model.Books.Cover ?? "noimage.png");
 }
 
-<h1>Edit</h1>
+<style>
+    .imageThumbnail {
+        height: 300px;
+        width: auto;
+    }
+    body{
+        background-color:antiquewhite;
+    }
 
-<h4>Books</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Books.ID" />
-            <div class="form-group">
-                <label asp-for="Books.Date" class="control-label"></label>
-                <input asp-for="Books.Date" class="form-control" />
-                <span asp-validation-for="Books.Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Books.Title" class="control-label"></label>
-                <input asp-for="Books.Title" class="form-control" />
-                <span asp-validation-for="Books.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Books.Author" class="control-label"></label>
-                <input asp-for="Books.Author" class="form-control" />
-                <span asp-validation-for="Books.Author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Books.Genre" class="control-label"></label>
-                <input asp-for="Books.Genre" class="form-control" />
-                <span asp-validation-for="Books.Genre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Books.Cover" class="control-label"></label>
-                <input asp-for="Books.Cover" class="form-control" />
-                <span asp-validation-for="Books.Cover" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Books.Summary" class="control-label"></label>
-                <input asp-for="Books.Summary" class="form-control" />
-                <span asp-validation-for="Books.Summary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+</style>
+<body>
+    <h1>Edit</h1>
+
+    <h4>Books</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div class="form-group row col-lg-4 offset-4">
+                    <img class="imageThumbnail" src="@cover" asp-append-version="true" />
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Cover" class="col-lg-12 col-form-label"></label>
+                    <div class="col-sm-12">
+                        <div class="custom-file">
+                            <input asp-for="Cover" class="custom-file-input form-control" />
+                            <label class="custom-file-label">Click here to change photo</label>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Books.ID" />
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Books.Date" class="control-label"></label>
+                        <input asp-for="Books.Date" class="form-control" />
+                        <span asp-validation-for="Books.Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Books.Title" class="control-label"></label>
+                        <input asp-for="Books.Title" class="form-control" />
+                        <span asp-validation-for="Books.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Books.Author" class="control-label"></label>
+                        <input asp-for="Books.Author" class="form-control" />
+                        <span asp-validation-for="Books.Author" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label asp-for="Books.Genre" class="control-label"></label>
+                        <input asp-for="Books.Genre" class="form-control" />
+                        <span asp-validation-for="Books.Genre" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12">
+                    <label asp-for="Books.Summary" class="control-label"></label>
+                    <input asp-for="Books.Summary" class="form-control" />
+                    <span asp-validation-for="Books.Summary" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        </script>
+    }
+</body>
