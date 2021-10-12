@@ -38,7 +38,7 @@ namespace RazorPagesMasterDetail.Pages.Nate
             var resources = _context.Books.Select(x => x);
             if (!string.IsNullOrEmpty(SearchString))
             {
-                resources = resources.Where(book => book.Title.Contains(SearchString));
+                resources = resources.Where(book => book.Title.Contains(SearchString) || book.Genre.Contains(SearchString));
             }
             switch (SortField)
             {
