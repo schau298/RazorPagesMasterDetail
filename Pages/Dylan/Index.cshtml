@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model RazorPagesMasterDetail.Pages.Dylan.IndexModel
 
 @{
@@ -38,8 +38,17 @@
        font-weight:normal;
    }
 </style>
+
 <body>
     <h1>Book List</h1>
+
+
+<h1>Book List</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
 
     <p>
         <a asp-page="Create">Create New</a>
@@ -79,6 +88,7 @@
                 <h4>Genres</h4>
                 <p>@item.Genre</p>
 
+
                 <h4>Summary</h4>
                 <p>@item.Summary</p>
             </div>
@@ -91,3 +101,14 @@
         </div>
     }
 </body>
+
+    <div class="row w-auto h-auto pb-0 pt-auto">
+        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+    </div>
+</div>
+        }
+    
+
+

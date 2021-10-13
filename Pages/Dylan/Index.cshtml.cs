@@ -19,7 +19,8 @@ namespace RazorPagesMasterDetail.Pages.Dylan
         {
             _context = context;
         }
-        
+
+
         public IList<Books> Books { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
@@ -46,3 +47,17 @@ namespace RazorPagesMasterDetail.Pages.Dylan
         }
     }
 }
+
+
+
+
+        public IList<Books> Books { get;set; }
+
+        public async Task OnGetAsync()
+        {
+            Books = await _context.Books.ToListAsync();
+        }
+    }
+}
+
+
