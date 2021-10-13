@@ -3,10 +3,38 @@
 
 @{
     ViewData["Title"] = "Details";
+    var cover = "~/images/" + (Model.Books.Cover ?? "noimage.png");
 }
 <style>
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: darkgoldenrod;
+        text-shadow: 2px, 2px, 3px saddlebrown;
+    }
+    .detailsBox {
+        border: 4px outset saddlebrown;
+        background-color: peachpuff;
+        text-align: left;
+        padding: 7px 7px 7px 7px;
+    }
+    .imageThumbnail {
+        height: 300px;
+        width: auto;
+    }
     body {
         background-color: antiquewhite;
+    }
+    h1 {
+        text-align: center;
+        font-weight: bold;
+        color: saddlebrown;
+        font-size: 36px;
+    }
+    h4 {
+        font-size: 20px;
+        color: darkgoldenrod;
+        font-weight: normal;
     }
 </style>
 <body>
@@ -15,42 +43,32 @@
 <div>
     <h4>Books</h4>
     <hr />
-    <div class="col-sm-12">
-        <img src="~/images/@Html.DisplayNameFor(model => model.Books.Cover)" asp-append-version="true" alt="DB Images" style="width:300px;height:auto;" />
+    <div class="form-group row col-lg-9 offset-4">
+        <img class="imageThumbnail" src="@cover" asp-append-version="true" />
     </div>
-    <dl class="row">
+    
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Books.Date)
-        </dt>
-        <dd class="col-sm-10">
+        <div class="detailsBox col-12">
+            <h2>Date</h2>
             @Html.DisplayFor(model => model.Books.Date)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Books.Title)
-        </dt>
-        <dd class="col-sm-10">
+        </div>
+        <div class="detailsBox col-12">
+            <h2>Title</h2>
             @Html.DisplayFor(model => model.Books.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Books.Author)
-        </dt>
-        <dd class="col-sm-10">
+        </div>
+        <div class="detailsBox col-12">
+            <h2>Author</h2>
             @Html.DisplayFor(model => model.Books.Author)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Books.Genre)
-        </dt>
-        <dd class="col-sm-10">
+        </div>
+        <div class="detailsBox col-12">
+            <h2>Genre</h2>
             @Html.DisplayFor(model => model.Books.Genre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Books.Summary)
-        </dt>
-        <dd class="col-sm-10">
+        </div>
+        <div class="detailsBox col-12">
+            <h2>Summary</h2>
             @Html.DisplayFor(model => model.Books.Summary)
-        </dd>
-    </dl>
+        </div>
+    
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Books.ID">Edit</a> |
