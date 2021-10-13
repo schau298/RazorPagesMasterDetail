@@ -7,9 +7,9 @@ using RazorPagesMasterDetail.Models;
 
 namespace RazorPagesMasterDetail.Data
 {
-    public class RazorPagesMasterDetailContext : DbContext
+    public class RazorPagesMasterDetailContextSQL : DbContext
     {
-        public RazorPagesMasterDetailContext (DbContextOptions<RazorPagesMasterDetailContext> options)
+        public RazorPagesMasterDetailContextSQL (DbContextOptions<RazorPagesMasterDetailContext> options)
             : base(options)
         {
         }
