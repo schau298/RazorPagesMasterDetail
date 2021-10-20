@@ -22,31 +22,32 @@
         <div class="col-6">
             <form>
                 Sort By: 
-                @Html.DropDownList("SortField", Html.GetEnumSelectList<SortFields>() );
+                @Html.DropDownList("SortField", Html.GetEnumSelectList<SortFields>() )
                 <input type="submit" value="Sort" />
             </form>
         </div>
     </div>
-    @foreach (var item in Model.Books)
+    <div class="card-deck w-100 h-auto m-0">
+        @foreach (var item in Model.Books)
     {
-    <div class="col-sm-4 border border-dark rounded m-2 p-4" style="min-width:300px;">
-        <div class="row w-100">
-            <div class="col-6" style="background-image:url(@item.Cover); background-size:contain; background-repeat:no-repeat; background-position:center;">
-            </div>
-            <div class="col-6">
-                <h4 class="text-primary">@item.Title</h4>
-                <h5 class="text-primary">@item.Author</h5>
-                <h5 class="mt-2">Genres</h5>
-                <p class="text-primary text-truncate">@item.Genre</p>
-                <h5 class="">Summary</h5>
-                <p class="text-primary text-truncate">@item.Summary</p>
+        <div class="card w-50 m-2">
+            <img class="card-img-top" src="@item.Cover" alt="Book cover image" />
+            <h5 class="card-header">@item.Title</h5>
+            <div class="card-body">
+                <h5 class="card-title">by @item.Author</h5>
+                <p class="card-text text-truncate">
+                    Genres<br />
+                    <span class="card-text text-primary">@item.Genre</span>
+                </p>
+                <p class="card-text text-truncate">
+                    Summary<br />
+                    <span class="card-text text-primary">@item.Summary</span>
+                </p>
+                <a class="btn btn-primary m-2" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                <a class="btn btn-primary m-2" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                <a class="btn btn-primary m-2" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </div>
         </div>
-        <div class="row w-auto h-auto pb-0 pt-auto">
-            <a class="col-3 mx-auto" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-            <a class="col-3 mx-auto" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-            <a class="col-3 mx-auto" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-        </div>
-    </div>
     }
+    </div>
 </div>
